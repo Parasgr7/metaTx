@@ -9,7 +9,7 @@ async function run() {
   // create relay using defender client
   const requestParams = {
     name: 'MetaTxRelayerExample',
-    network: 'bsctest',
+    network: 'goerli',
     minBalance: BigInt(1e17).toString(),
   };
   const relayer = await relayClient.create(requestParams);

@@ -41,11 +41,13 @@ export async function minter(assetToken, provider, mint) {
   await window.ethereum.enable();
   const userProvider = new ethers.providers.Web3Provider(window.ethereum);
   const userNetwork = await userProvider.getNetwork();
-  if (userNetwork.chainId !== 97) throw new Error(`Please switch to BSC Testnet for signing`);
+  if (userNetwork.chainId !== 5) throw new Error(`Please switch to Goerli Testnet for signing`);
 
   const signer = userProvider.getSigner();
   const from = await signer.getAddress();
+  console.log("provider",provider);
   const balance = await provider.getBalance(from);
+  console.log("Signer", signer, from, balance);
   
   const canSendTx = balance.gt(1e15);
   if (canSendTx) return sendTx(assetToken.connect(signer), mint);

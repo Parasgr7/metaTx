@@ -15,10 +15,11 @@ function Minter() {
     setSubmitting(true);
     
     try {
+      console.log("provider",provider);
       const response = await minter(assetToken, provider, mint);
       const hash = response.hash;
       const onClick = hash
-        ? () => window.open(`https://testnet.bscscan.com/tx/${hash}`)
+        ? () => window.open(`https://goerli.etherscan.io/tx/${hash}`)
         : undefined;
       toast('Transaction sent!', { type: 'info', onClick });
       mintInput.current.value = '';
